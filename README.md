@@ -1,6 +1,12 @@
-# GreenPulse - Tree Tracking & Care Application
+# GreenPulse - Track, Care, Verify Trees
+
+> **🌱 Live Demo:** [https://hack1-ochre.vercel.app](https://hack1-ochre.vercel.app)
 
 A full-stack web application to track, care for, and verify trees after plantation using community contributions and AI guidance.
+
+## 🚀 Quick Start
+
+Visit the live demo: **[hack1-ochre.vercel.app](https://hack1-ochre.vercel.app)**
 
 ## Features
 
@@ -182,127 +188,7 @@ This uses `concurrently` to run both frontend and backend.
 
 ## API Documentation
 
-### Authentication
-
-#### POST /api/auth/register
-Register a new user.
-
-**Request Body:**
-```json
-{
-  "email": "user@example.com",
-  "password": "password123",
-  "firstName": "John",
-  "lastName": "Doe",
-  "city": "San Francisco",
-  "role": "volunteer"
-}
-```
-
-#### POST /api/auth/login
-Login user.
-
-**Request Body:**
-```json
-{
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-
-#### GET /api/auth/profile
-Get current user profile (requires authentication).
-
-### Tree Management
-
-#### POST /api/trees/register
-Register a new tree (requires authentication).
-
-**Request Body:**
-```json
-{
-  "gpsLat": 37.7749,
-  "gpsLng": -122.4194,
-  "speciesId": "uuid",
-  "city": "San Francisco",
-  "currentHeight": 2.5
-}
-```
-
-#### GET /api/trees/:id
-Get tree details.
-
-#### GET /api/trees
-Get trees with optional filters:
-- `city` - Filter by city
-- `speciesId` - Filter by species
-- `status` - Filter by status
-- `lat`, `lng`, `radius` - Filter by location
-
-#### GET /api/trees/species-list
-Get list of all species.
-
-### Tasks
-
-#### POST /api/tasks/create
-Create a new task (requires authentication).
-
-#### GET /api/tasks/nearby
-Get nearby tasks:
-- `lat`, `lng` - User location (required)
-- `radius` - Search radius in km (default: 10)
-- `type` - Filter by task type
-- `status` - Filter by status
-
-#### POST /api/tasks/:id/join
-Join a task (requires authentication).
-
-#### PATCH /api/tasks/:id/complete
-Complete a task (requires authentication).
-
-### Health Tracking
-
-#### POST /api/health/trees/:id/health-update
-Create health log entry (requires authentication).
-
-**Request Body:**
-```json
-{
-  "height": 2.5,
-  "notes": "Tree looks healthy",
-  "photoUrl": "https://..."
-}
-```
-
-#### GET /api/health/trees/:id/health-history
-Get health history for a tree.
-
-#### GET /api/health/flagged
-Get trees flagged for review (requires botanist/admin role).
-
-#### PATCH /api/health/:id/review
-Submit botanist review (requires botanist/admin role).
-
-### Impact Metrics
-
-#### GET /api/impact/city?city=San Francisco
-Get environmental impact metrics for a city.
-
-#### GET /api/impact/tree/:id
-Get environmental impact for a specific tree.
-
-### Reports
-
-#### GET /api/reports/pdf
-Generate PDF report (requires admin/organizer role).
-
-### Admin
-
-#### GET /api/admin/dashboard
-Get admin dashboard data (requires admin role).
-
-#### GET /api/admin/users
-Get all users (requires admin role).
+For complete API documentation, see [API_DOCUMENTATION.md](./API_DOCUMENTATION.md)
 
 ## Database Schema
 
@@ -420,6 +306,16 @@ Current implementation simulates AI analysis:
 
 ## Deployment
 
+### Frontend (Vercel)
+
+The frontend is deployed on Vercel:
+**[https://hack1-ochre.vercel.app](https://hack1-ochre.vercel.app)**
+
+To deploy your own:
+1. Connect GitHub repository to Vercel
+2. Set root directory to `frontend`
+3. Deploy automatically on push
+
 ### Backend (Heroku/Railway)
 
 1. Set environment variables in hosting platform
@@ -429,23 +325,7 @@ Current implementation simulates AI analysis:
 git push heroku main
 ```
 
-### Frontend (Vercel)
-
-1. Connect GitHub repository
-2. Set environment variables:
-   - `NEXT_PUBLIC_API_URL` - Your backend API URL
-3. Deploy automatically on push
-
-### Database Setup
-
-**PostgreSQL (Heroku/Railway):**
-- Use managed PostgreSQL service
-- Run migrations on deploy
-
-**MongoDB (MongoDB Atlas):**
-- Create cluster
-- Whitelist IP addresses
-- Get connection string
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## Testing
 
