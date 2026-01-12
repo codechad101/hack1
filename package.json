@@ -1,0 +1,19 @@
+{
+  "name": "greenpulse",
+  "version": "1.0.0",
+  "description": "GreenPulse - Tree tracking and care application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "setup": "npm run install-all && echo '✅ Dependencies installed! Now:' && echo '1. Set up PostgreSQL database: createdb greenpulse' && echo '2. Configure backend/.env file' && echo '3. Configure frontend/.env.local file' && echo '4. Run: cd backend && node scripts/seed.js' && echo '5. Start: npm run dev'"
+  },
+  "keywords": ["trees", "environment", "community", "tracking"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
